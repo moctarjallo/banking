@@ -4,7 +4,15 @@ class Client:
         self.lastname = lastname
         self.address = address
 
-    def from_dict(self, data):
+    @classmethod
+    def from_dict(cls, data):
         return Client(data['firstname'],
                       data['lastname'],
                       data['address'])
+
+    def to_dict(self):
+        return {
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'address': self.address
+        }
