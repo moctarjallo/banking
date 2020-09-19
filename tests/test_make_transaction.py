@@ -1,17 +1,16 @@
 import unittest
 
 from ebank.domain import MakeTransaction
-from ebank.domain.agents import Agent
 
-from ebank.domain.request import TransactionRequest
+from ebank.domain.request import MakeTransactionRequest
+from ebank.domain.response import TransactionResponse
 
 class TestMakeTransaction(unittest.TestCase):
     def setUp(self):
-        self.agent = Agent()
-        self.make_transaction = MakeTransaction(self.agent)
+        self.make_transaction = MakeTransaction(TransactionResponse)
 
     def test_simple(self):
-        request = TransactionRequest({
+        request = MakeTransactionRequest({
             'action': 'deposit',
             'account': {
                 'client': {
@@ -26,7 +25,7 @@ class TestMakeTransaction(unittest.TestCase):
         })
 
         transaction = self.make_transaction.execute(request)
-        self.assertEqual(transaction, {
+        self.assertEqual(transaction.data, {
             'action': 'deposit',
             'amount': 100,
             'client_name': 'moctar',

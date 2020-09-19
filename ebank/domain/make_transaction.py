@@ -1,14 +1,12 @@
-from .agents import TransactionAgent
-
-from .request import TransactionRequest
+from .request import MakeTransactionRequest
 
 from .entities import Client, Account
 
 class MakeTransaction:
-    def __init__(self, agent: TransactionAgent):
-        self.agent = agent
+    def __init__(self, Response: type):
+        self.Response = Response
 
-    def execute(self, request: TransactionRequest):
+    def execute(self, request: MakeTransactionRequest):
         client = Client.from_dict(request.data['account']['client'])
         account = Account(client, request.data['account']['balance'], \
                                   request.data['account']['code'])
@@ -16,5 +14,5 @@ class MakeTransaction:
             trans = account.deposit(request.data['amount'])
         elif request.data['action'] == 'withdraw':
             trans = account.withdraw(request.data['amount'])
-        response = self.agent.present(trans)
+        response = self.Response(trans.to_dict())
         return response

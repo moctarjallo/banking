@@ -10,5 +10,5 @@ class Request:
 class CreateAccountRequest(Request):
     pass
 
-class TransactionRequest(Request):
+class MakeTransactionRequest(Request):
     pass

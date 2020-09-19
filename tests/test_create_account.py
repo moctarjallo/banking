@@ -1,14 +1,13 @@
 import unittest
 
-from ebank.domain.agents import Agent
 from ebank.domain.request import CreateAccountRequest
+from ebank.domain.response import AccountResponse
 from ebank.domain import CreateAccount
 
 
 class TestCreateAccount(unittest.TestCase):
     def setUp(self):
-        agent = Agent()
-        self.create_account = CreateAccount(agent)
+        self.create_account = CreateAccount(AccountResponse)
 
     def test_normal(self):
         request = CreateAccountRequest({
@@ -20,10 +19,18 @@ class TestCreateAccount(unittest.TestCase):
 
         response = self.create_account.execute(request)
 
-        self.assertEqual(response['firstname'], 'moctar')
-        self.assertEqual(response['lastname'], 'diallo')
-        self.assertEqual(response['address'], 'medina')
-        self.assertEqual(response['balance'], 400)
+        self.assertLess(response.data['code'], 10000)
+        self.assertGreaterEqual(response.data['code'], 1)
+
+        del response.data['code']
+        self.assertEqual(response.data, {
+            'client':{
+                'firstname': 'moctar',
+                'lastname': 'diallo',
+                'address': 'medina',
+            },
+            'balance': 400,
+        })
 
 if __name__ == '__main__':
     unittest.main()
