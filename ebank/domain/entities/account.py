@@ -30,7 +30,8 @@ class Account:
     def to_dict(self):
         return {
             "client": self.client.to_dict(),
-            "balance": self.balance
+            "balance": self.balance,
+            "code": self._code
         }
 
 class TransactionError(Exception):

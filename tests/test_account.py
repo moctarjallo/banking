@@ -25,7 +25,8 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(self.account.balance, 200)
 
     def test_to_dict(self):
-        d = self.account.to_dict()
+        account = Account(self.client, 400, code=4444)
+        d = account.to_dict()
         self.assertEqual(d,
             {
                 'client': {
@@ -34,6 +35,7 @@ class TestAccount(unittest.TestCase):
                     'address': 'medina'
                 },
                 'balance': 400,
+                'code': 4444
             }
         )
 
