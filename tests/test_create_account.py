@@ -1,8 +1,9 @@
 import unittest
 
 from ebank.domain.agents import Agent
-
+from ebank.domain.request import CreateAccountRequest
 from ebank.domain import CreateAccount
+
 
 class TestCreateAccount(unittest.TestCase):
     def setUp(self):
@@ -10,14 +11,14 @@ class TestCreateAccount(unittest.TestCase):
         self.create_account = CreateAccount(agent)
 
     def test_normal(self):
-        client_request = {
+        request = CreateAccountRequest({
             'firstname': 'moctar',
             'lastname': 'diallo',
             'address': 'medina',
             'balance': 400
-        }
+        })
 
-        response = self.create_account.execute(client_request)
+        response = self.create_account.execute(request)
 
         self.assertEqual(response['firstname'], 'moctar')
         self.assertEqual(response['lastname'], 'diallo')
