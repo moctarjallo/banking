@@ -1,6 +1,6 @@
 import unittest
 
-from ebank.domain import MakeTransaction
+from ebank import MakeTransaction
 
 from ebank.api import Request, Response
 

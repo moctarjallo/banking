@@ -1,4 +1,4 @@
-from .entities import Client, Account
+from .domain.entities import Client, Account
 
 from ebank.api import Request
 

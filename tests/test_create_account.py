@@ -1,7 +1,7 @@
 import unittest
 
 from ebank.api import Request, Response
-from ebank.domain import CreateAccount
+from ebank import CreateAccount
 
 class TestCreateAccount(unittest.TestCase):
     def setUp(self):
