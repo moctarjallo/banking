@@ -1,6 +1,6 @@
 from ebank.api import Request, Response
 
-from .domain.entities import Client, Account
+from .domain import Client, Account
 
 class MakeTransaction:
     def __init__(self, Response: type):
