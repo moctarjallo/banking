@@ -1,12 +1,12 @@
 from .entities import Client, Account
 
-from .request import CreateAccountRequest
+from ebank.api import Request
 
 class CreateAccount:
     def __init__(self, Response: type):
         self.Response = Response
 
-    def execute(self, request: CreateAccountRequest):
+    def execute(self, request: Request):
         client = Client(request.data['firstname'], \
                         request.data['lastname'], \
                         request.data['address'])

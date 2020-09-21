@@ -2,15 +2,14 @@ import unittest
 
 from ebank.domain import MakeTransaction
 
-from ebank.domain.request import MakeTransactionRequest
-from ebank.domain.response import TransactionResponse
+from ebank.api import Request, Response
 
 class TestMakeTransaction(unittest.TestCase):
     def setUp(self):
-        self.make_transaction = MakeTransaction(TransactionResponse)
+        self.make_transaction = MakeTransaction(Response)
 
     def test_simple(self):
-        request = MakeTransactionRequest({
+        request = Request({
             'action': 'deposit',
             'account': {
                 'client': {

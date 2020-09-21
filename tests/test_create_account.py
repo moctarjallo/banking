@@ -1,16 +1,14 @@
 import unittest
 
-from ebank.domain.request import CreateAccountRequest
-from ebank.domain.response import AccountResponse
+from ebank.api import Request, Response
 from ebank.domain import CreateAccount
-
 
 class TestCreateAccount(unittest.TestCase):
     def setUp(self):
-        self.create_account = CreateAccount(AccountResponse)
+        self.create_account = CreateAccount(Response)
 
     def test_normal(self):
-        request = CreateAccountRequest({
+        request = Request({
             'firstname': 'moctar',
             'lastname': 'diallo',
             'address': 'medina',
