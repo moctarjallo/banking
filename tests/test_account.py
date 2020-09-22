@@ -1,6 +1,6 @@
 import unittest
 
-from ebank.domain import Account, Client
+from banking.domain import Account, Client
 
 class TestAccount(unittest.TestCase):
     def setUp(self):

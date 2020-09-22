@@ -1,6 +1,6 @@
 import unittest
 
-from ebank.domain import Transaction
+from banking.domain import Transaction
 
 class TestTransaction(unittest.TestCase):
     def test_to_dict(self):

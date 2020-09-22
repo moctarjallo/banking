@@ -1,6 +1,6 @@
 from .domain import Client, Account
 
-from ebank.api import Request
+from banking.api import Request
 
 class CreateAccount:
     def __init__(self, Response: type):

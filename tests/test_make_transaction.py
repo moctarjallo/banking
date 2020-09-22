@@ -1,8 +1,8 @@
 import unittest
 
-from ebank import MakeTransaction
+from banking import MakeTransaction
 
-from ebank.api import Request, Response
+from banking.api import Request, Response
 
 class TestMakeTransaction(unittest.TestCase):
     def setUp(self):

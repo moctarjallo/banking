@@ -1,5 +1,5 @@
 import unittest
-from ebank.domain import Client
+from banking.domain import Client
 
 class TestClient(unittest.TestCase):
     def test_to_dict(self):

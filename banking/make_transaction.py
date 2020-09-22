@@ -1,4 +1,4 @@
-from ebank.api import Request, Response
+from banking.api import Request, Response
 
 from .domain import Client, Account
 
