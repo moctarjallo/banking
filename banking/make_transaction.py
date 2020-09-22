@@ -1,4 +1,4 @@
-from banking.api import Request, Response
+import pythonapi as api
 
 from .domain import Client, Account
 
@@ -6,7 +6,7 @@ class MakeTransaction:
     def __init__(self, Response: type):
         self.Response = Response
 
-    def execute(self, request: Request):
+    def execute(self, request: api.Request):
         client = Client.from_dict(request.data['account']['client'])
         account = Account(client, request.data['account']['balance'], \
                                   request.data['account']['code'])

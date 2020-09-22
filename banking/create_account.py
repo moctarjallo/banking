@@ -1,12 +1,12 @@
 from .domain import Client, Account
 
-from banking.api import Request
+import pythonapi as api
 
 class CreateAccount:
     def __init__(self, Response: type):
         self.Response = Response
 
-    def execute(self, request: Request):
+    def execute(self, request: api.Request):
         client = Client(request.data['firstname'], \
                         request.data['lastname'], \
                         request.data['address'])

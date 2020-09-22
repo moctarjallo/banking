@@ -1,14 +1,15 @@
 import unittest
 
-from banking.api import Request, Response
+import pythonapi as api
+
 from banking import CreateAccount
 
 class TestCreateAccount(unittest.TestCase):
     def setUp(self):
-        self.create_account = CreateAccount(Response)
+        self.create_account = CreateAccount(api.Response)
 
     def test_normal(self):
-        request = Request({
+        request = api.Request({
             'firstname': 'moctar',
             'lastname': 'diallo',
             'address': 'medina',

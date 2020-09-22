@@ -2,14 +2,14 @@ import unittest
 
 from banking import MakeTransaction
 
-from banking.api import Request, Response
+import pythonapi as api
 
 class TestMakeTransaction(unittest.TestCase):
     def setUp(self):
-        self.make_transaction = MakeTransaction(Response)
+        self.make_transaction = MakeTransaction(api.Response)
 
     def test_simple(self):
-        request = Request({
+        request = api.Request({
             'action': 'deposit',
             'account': {
                 'client': {
