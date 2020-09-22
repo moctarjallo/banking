@@ -6,7 +6,7 @@ from banking import CreateAccount
 
 class TestCreateAccount(unittest.TestCase):
     def setUp(self):
-        self.create_account = CreateAccount(api.Response)
+        self.create_account = CreateAccount()
 
     def test_normal(self):
         request = api.Request({
@@ -16,7 +16,8 @@ class TestCreateAccount(unittest.TestCase):
             'balance': 400
         })
 
-        response = self.create_account.execute(request)
+        account = self.create_account.execute(request)
+        response = api.Response(account)
 
         self.assertLess(response.data['code'], 10000)
         self.assertGreaterEqual(response.data['code'], 1)

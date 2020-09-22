@@ -3,8 +3,6 @@ import pythonapi as api
 from .domain import Client, Account
 
 class MakeTransaction:
-    def __init__(self, Response: type):
-        self.Response = Response
 
     def execute(self, request: api.Request):
         client = Client.from_dict(request.data['account']['client'])
@@ -14,5 +12,4 @@ class MakeTransaction:
             trans = account.deposit(request.data['amount'])
         elif request.data['action'] == 'withdraw':
             trans = account.withdraw(request.data['amount'])
-        response = self.Response(trans.to_dict())
-        return response
+        return trans.to_dict()

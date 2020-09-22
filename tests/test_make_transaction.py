@@ -6,7 +6,7 @@ import pythonapi as api
 
 class TestMakeTransaction(unittest.TestCase):
     def setUp(self):
-        self.make_transaction = MakeTransaction(api.Response)
+        self.make_transaction = MakeTransaction()
 
     def test_simple(self):
         request = api.Request({
@@ -24,7 +24,8 @@ class TestMakeTransaction(unittest.TestCase):
         })
 
         transaction = self.make_transaction.execute(request)
-        self.assertEqual(transaction.data, {
+        response = api.Response(transaction)
+        self.assertEqual(response.data, {
             'action': 'deposit',
             'amount': 100,
             'client_name': 'moctar',
