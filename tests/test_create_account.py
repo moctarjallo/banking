@@ -16,7 +16,7 @@ class TestCreateAccount(unittest.TestCase):
             'balance': 400
         })
 
-        account = self.create_account.execute(request)
+        account = self.create_account.execute(request.data)
         response = api.Response(account)
 
         self.assertLess(response.data['code'], 10000)

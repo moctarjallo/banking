@@ -23,7 +23,7 @@ class TestMakeDepositTransaction(unittest.TestCase):
             'amount': 100
         })
 
-        transaction = self.make_transaction.execute(request)
+        transaction = self.make_transaction.execute(request.data)
         del transaction['time']
         response = api.Response(transaction)
         self.assertEqual(response.data, {
@@ -54,7 +54,7 @@ class TestMakeWithdrawTransaction(unittest.TestCase):
             'amount': 100
         })
 
-        transaction = self.make_transaction.execute(request)
+        transaction = self.make_transaction.execute(request.data)
         del transaction['time']
         response = api.Response(transaction)
         self.assertEqual(response.data, {
