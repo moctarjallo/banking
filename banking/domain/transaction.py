@@ -11,6 +11,4 @@ class Transaction:
         self.time = date.now().ctime()
 
     def to_dict(self):
-        d = self.__dict__
-        del d['time']
-        return d
+        return self.__dict__
