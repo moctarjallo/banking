@@ -16,11 +16,19 @@ class Account:
         return self._code
 
     def deposit(self, amount):
+        try:
+            amount = float(amount)
+        except TypeError:
+            raise TransactionError(f"{amount} should be a number")
         old_balance = self.balance
         self.balance += amount
         return Transaction(self.deposit.__name__, amount, self.client.firstname, self.get_code(), old_balance, self.balance)
 
     def withdraw(self, amount):
+        try:
+            amount = float(amount)
+        except TypeError:
+            raise TransactionError(f"{amount} should be a number")
         if amount > self.balance:
             raise TransactionError(f"You don't have enough money in your account")
         old_balance = self.balance
