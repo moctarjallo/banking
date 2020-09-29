@@ -8,8 +8,8 @@ class MakeTransaction:
         client = Client.from_dict(request['account']['client'])
         account = Account(client, request['account']['balance'], \
                                   request['account']['code'])
-        if request['action'] == 'deposit':
+        if request['action'] in ['deposit', 'd']:
             trans = account.deposit(request['amount'])
-        elif request['action'] == 'withdraw':
+        elif request['action'] in ['withdraw', 'w']:
             trans = account.withdraw(request['amount'])
         return trans.to_dict()
