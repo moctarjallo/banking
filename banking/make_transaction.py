@@ -1,6 +1,6 @@
 import pythonapi as api
 
-from .domain import Client, Account
+from .domain import Client, Account, Transaction
 
 class MakeTransaction:
 
@@ -12,4 +12,6 @@ class MakeTransaction:
             trans = account.deposit(request['amount'])
         elif request['action'] in ['withdraw', 'w']:
             trans = account.withdraw(request['amount'])
+        else:
+            raise Transaction.Error(f"Action not recognized")
         return trans.to_dict()

@@ -12,3 +12,6 @@ class Transaction:
 
     def to_dict(self):
         return self.__dict__
+
+    class Error(Exception):
+        pass
