@@ -1,6 +1,6 @@
 import unittest
 
-from banking.domain import Account, Client
+from banking.domain import Account, Client, Transaction
 
 class TestAccount(unittest.TestCase):
     def setUp(self):
@@ -39,6 +39,10 @@ class TestAccount(unittest.TestCase):
             }
         )
 
+    def test_withdraw_more_than_balance(self):
+        account = Account(self.client, 400, code=4444)
+        with self.assertRaises(Transaction.Error):
+            account.withdraw(500)
 
 if __name__ == '__main__':
     unittest.main()
