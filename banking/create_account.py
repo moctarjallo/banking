@@ -1,10 +1,7 @@
 from .domain import Client, Account
-
-import pythonapi as api
-
 class CreateAccount:
 
-    def execute(self, request: api.Request):
+    def execute(self, request: {}):
         client = Client(request['firstname'], \
                         request['lastname'], \
                         request['address'])

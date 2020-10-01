@@ -1,10 +1,8 @@
-import pythonapi as api
-
 from .domain import Client, Account, Transaction
 
 class MakeTransaction:
 
-    def execute(self, request: api.Request):
+    def execute(self, request: {}):
         client = Client.from_dict(request['account']['client'])
         account = Account(client, request['account']['balance'], \
                                   request['account']['code'])
