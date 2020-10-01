@@ -8,7 +8,7 @@ class Account:
         self.client = client
         self.balance = balance
         if code:
-            self._code = code
+            self._code = int(code)
         else:
             self._code = random.randint(1, 10000)
 
